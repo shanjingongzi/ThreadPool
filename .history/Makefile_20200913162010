@@ -1,0 +1,4 @@
+INCDIR:=-I ./include
+SRCDIR:=$(wildcard ./src/*.cpp)
+OBJDIR:=$(patsub ./src/%.cpp,%.o)
+main.cpp

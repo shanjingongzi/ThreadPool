@@ -4,5 +4,5 @@ OBJS:=$(patsubst ./src/%.cpp,%.o,$(SRCS))
 CC:=g++
 main : main.o
 	$(CC) $(OBJS) -o main
-%.o : ./src/%.cpp
+%.o : %.cpp
 	$(CC) $(SRCS) -c 

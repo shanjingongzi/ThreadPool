@@ -3,6 +3,6 @@ SRCS:=$(wildcard ./src/*.cpp)
 OBJS:=$(patsubst ./src/%.cpp,%.o,$(SRCS))
 CC:=g++
 main : main.o
-	$(CC) $(OBJS) -o main
-%.o : ./src/%.cpp
-	$(CC) $(SRCS) -c 
+	$(CC) main.o -o main
+main.o:$(OBJS)
+	$(CC) $(S) -c 

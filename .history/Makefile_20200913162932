@@ -1,0 +1,12 @@
+INCDIR:=-I ./include
+SRCS:=$(wildcard ./src/*.cpp)
+OBJS:=$(patsub ./src/%.cpp,%.o)
+CC:=g++
+main : main.o
+	$(CC) main.o -o main
+main.o:$(OBJS)
+
+	$(CC) $(OBJS) -c main 
+%.o :%.cpp
+	$(CC) -c $(SRCS)
+	
