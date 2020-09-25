@@ -1,5 +1,3 @@
-#ifndef THREAD_POOL_H
-#define THREAD_POOL_H
 #include<iostream>
 #include<queue>
 #include<thread>
@@ -25,12 +23,8 @@ public:
     void AddThread(int num=1);
     template<typename ...Ty>
     std::function<void()>MakeFunction(Ty...args);
-    void DeleteThread(size_t num=1);
+
+    
 private:
     std::queue<std::function<void>>TaskQue;
-    bool start;
-    bool stop;
-    bool pause;
 };
-
-#endif

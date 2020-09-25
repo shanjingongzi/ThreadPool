@@ -26,6 +26,7 @@ public:
     template<typename ...Ty>
     std::function<void()>MakeFunction(Ty...args);
     void DeleteThread(size_t num=1);
+
 private:
     std::queue<std::function<void>>TaskQue;
     bool start;
