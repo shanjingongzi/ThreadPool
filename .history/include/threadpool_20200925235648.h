@@ -3,15 +3,6 @@
 #include<thread>
 #include<functional>
 #include<future>
-
-namespace {
-    enum Leavel{ONE,TWO,THREE};
-    struct Task
-   {
-        std::function<void()>task;
-        Leavel leavel; 
-   };
-}
 class ThreadPool
 {
 public:
@@ -23,7 +14,7 @@ public:
     void AddThread(int num=1);
     template<typename ...Ty>
     std::function<void()>MakeFunction(Ty...args);
-
+    
     
 private:
     std::queue<std::function<void>>TaskQue;

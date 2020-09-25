@@ -9,7 +9,7 @@ namespace {
     struct Task
    {
         std::function<void()>task;
-        Leavel leavel; 
+        Leavel  
    };
 }
 class ThreadPool

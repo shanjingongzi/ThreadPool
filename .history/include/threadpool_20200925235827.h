@@ -5,11 +5,10 @@
 #include<future>
 
 namespace {
-    enum Leavel{ONE,TWO,THREE};
+    enum leavel{}
     struct Task
    {
-        std::function<void()>task;
-        Leavel leavel; 
+    
    };
 }
 class ThreadPool
