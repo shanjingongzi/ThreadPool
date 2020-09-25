@@ -11,8 +11,8 @@ public:
     void AddTask();
     template<typename T>
     std::future<T>AddTask();
-    void AddThread(int num=1);
-    
+    void AddThread();
+    void AddThtread
 private:
     std::queue<std::function<void>>TaskQue;
 
