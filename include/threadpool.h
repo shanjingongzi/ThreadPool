@@ -22,8 +22,8 @@ public:
     ThreadPool(size_t size);
     template<typename Func,typename ...Args>
     void AddTask(Func func,Args...arg);
-    template<typename T>
-    std::future<T>AddTaskWithRt(std::function<void()>);
+    template<typename Func,typename...Args>
+    auto AddTaskWithRt(Func func,Args...args)->std::future<decltype(func(args...))>;
     void AddThread(int num=1);
     template<typename ...Ty>
     std::function<void()>MakeFunction(Ty...args);
@@ -36,8 +36,8 @@ private:
     std::condition_variable con_var;
     std::mutex mtx;
 };
-template<typename Func,typename ...Args>
-void ThreadPool::AddTask(Func func,Args...arg)
+template<typename Func,typename...Args>
+void ThreadPool::ThreadPool::AddTask(Func func,Args ...args)
 {
     std::function<void()>task=std::bind(func,args...);
     Task myTask;
@@ -47,20 +47,20 @@ void ThreadPool::AddTask(Func func,Args...arg)
         tasks.push(myTask);
     }
 }
+
 template<typename Func,typename ...Args>
-auto AddTaskWithRt(Func func,Args...arg)->std::future<typename std::result_of<Func(Args...)>::type>
+auto ThreadPool::AddTaskWithRt(Func func,Args...args)->std::future<decltype(func(args...))>
 {
     using retType=decltype(func(args...));
-    packaged_task<retType>task(std::bind(std::forward<Func>(func),std::forward<Args>(args...));
+    std::packaged_task<retType>task(std::bind(func,args...));
     std::future<retType>future=task.get_future();
     {
-        std::lock_guard<std::mutex>lck{mtx};
+        std::lock_guard<std::mutex>lck(mtx);
         Task mytask;
         mytask.task=task;
         tasks.push(mytask);
     }
     return future; 
 }
-
 
 #endif

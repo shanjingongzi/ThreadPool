@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "mingw32-make",
+            "command": "make",
             "group": "build",
             "presentation": {
                 // Reveal the output only if unrecognized errors occur.
