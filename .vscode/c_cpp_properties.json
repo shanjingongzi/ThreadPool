@@ -4,11 +4,14 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "./include/**"
+                "./include/**",
+                "D:/DevelopmentSDK/**"
             ],
             "browse": {
                 "path": [
-                    "./include/**"  
+                    "${workspaceFolder}/**",
+                     "./include/**",
+                     "D:/DevelopmentSDK/**"
                 ]
             },
             "defines": [

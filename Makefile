@@ -7,3 +7,5 @@ main : main.o
 	$(CC) $(FLAG) $(OBJS)  -o main
 %.o : ./src/%.cpp
 	$(CC) $(FLAG) $(SRCS) $(INCDIR) -c 
+clean:
+	del .\*.o 
